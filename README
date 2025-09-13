@@ -1,5 +1,7 @@
 potrebno u cmd sa lokacijom unutar foldera backend pokrenuti sledecu naredbu: npm install mysql2
 
+potpuna baza sa svim podacima je u fajlu hakaton2025 unutar doc foldera
+
 .env fajl u backendu 
 PORT=3000
 DB_HOST=localhost

@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"lijek 1\", \r\n    \"ATC\": \"neki kod lijeka\", \r\n    \"INN\": \"drugi kod lijeka\", \r\n    \"available\": true, \r\n    \"description\": \"ne za normalne\"\r\n}",
+							"raw": "{\r\n    \"name\": \"lijek 1\", \r\n    \"ATC\": \"neki kod lijeka\", \r\n    \"INN\": \"drugi kod lijeka\", \r\n    \"available\": \"dostupan svima\", \r\n    \"description\": \"ne za normalne\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
