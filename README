@@ -1,4 +1,12 @@
 potrebno u cmd sa lokacijom unutar foldera backend pokrenuti sledecu naredbu: npm install mysql2
+
+.env fajl u backendu 
+PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD= vasa lozinka za mysql
+DB_NAME=hakaton2025
+
 Developer pokrece backend - npm run dev
 Za produkcijono okruzenje backend - npm start
 Dev pokrece frontend - npm run dev
