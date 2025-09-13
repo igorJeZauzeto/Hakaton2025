@@ -1,3 +1,4 @@
+potrebno u cmd sa lokacijom unutar foldera backend pokrenuti sledecu naredbu: npm install mysql2
 Developer pokrece backend - npm run dev
 Za produkcijono okruzenje backend - npm start
 Dev pokrece frontend - npm run dev
