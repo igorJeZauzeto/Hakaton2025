@@ -29,7 +29,7 @@ async function runImport() {
         for (const file of excelFiles) {
             const filePath = path.join('../imports', file);
             console.log(`Počinje obrada fajla: ${file}`);
-            await processAndImportFile(filePath, connection);
+            await processAndUpdateFile(filePath, connection);
         }
 
         console.log('Uvoz svih fajlova je završen.');
@@ -43,26 +43,38 @@ async function runImport() {
     }
 }
 
-// Funkcija za obradu i uvoz fajla s async/await
-async function processAndImportFile(filePath, connection) {
+// Funkcija za obradu i ažuriranje fajla s async/await
+async function processAndUpdateFile(filePath, connection) {
     const workbook = XLSX.readFile(filePath);
     const sheetName = workbook.SheetNames[0];
     const worksheet = workbook.Sheets[sheetName];
     const data = XLSX.utils.sheet_to_json(worksheet);
 
     for (const row of data) {
-        const ATC = row['ATC'];
-        const INN = row['INN'];
         const name = row['Naziv lijeka'];
-        const desc = row['Farmaceutski oblik, jačina i opis pakovanja'];
-        const avail = row['Režim izdavanja lijeka'];
-        const sql = `INSERT INTO Drug (name, ATC, INN, maxPrice, available, description) VALUES (?, ?, ?, ?, ?, ?)`;
+        const pharmForm = row['Farmaceutski oblik'] || '';
+        const strength = row['Jačina lijeka'] || '';
+        const packDesc = row['Opis pakovanja'] || '';
+        
+        let maxPrice = row['Utvrđena maksimalna cijena lijeka'];
 
-        try {
-            await connection.execute(sql, [name, ATC, INN, null, avail, desc]);
-            console.log(`Uspješno unesen red: Ime=${name}`);
-        } catch (err) {
-            console.error('Greška pri unosu reda:', err.message);
+        const description = [pharmForm, strength, packDesc].join(', ');
+
+        if (name && description && maxPrice !== undefined && maxPrice !== null && !isNaN(maxPrice)) {
+            const sql = `UPDATE Drug SET maxPrice = ? WHERE name = ? AND description = ?`;
+
+            try {
+                const [result] = await connection.execute(sql, [maxPrice, name, description]);
+                if (result.affectedRows > 0) {
+                    console.log(`Uspješno ažuriran red za lijek s nazivom: '${name}' i opisom: '${description}'`);
+                } else {
+                    console.log(`Nema ažuriranih redova za lijek s nazivom: '${name}'. Možda ne postoji.`);
+                }
+            } catch (err) {
+                console.error(`Greška pri ažuriranju reda za '${name}':`, err.message);
+            }
+        } else {
+            console.log(`Preskače se red zbog nedostajuće ili nevažeće vrijednosti za 'Naziv lijeka', 'description' ili 'maxPrice'.`);
         }
     }
 }
