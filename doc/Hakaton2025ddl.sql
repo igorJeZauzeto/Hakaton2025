@@ -1,4 +1,5 @@
 create database hakaton2025;
+USE hakaton2025;
 CREATE TABLE Account (
     id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -11,7 +12,7 @@ CREATE TABLE Drug(
     ATC VARCHAR(255),
     INN VARCHAR(255),
     maxPrice FLOAT,
-    available BOOLEAN,
+    available TEXT,
     description TEXT
 );
 CREATE TABLE Treatment(
