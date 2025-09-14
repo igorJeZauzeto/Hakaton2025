@@ -13,7 +13,8 @@ CREATE TABLE Drug(
     INN VARCHAR(255),
     maxPrice FLOAT,
     available TEXT,
-    description TEXT
+    description TEXT,
+    urlPic VARCHAR(255)
 );
 CREATE TABLE Treatment(
 	idAcc INT,
