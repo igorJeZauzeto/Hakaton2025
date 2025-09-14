@@ -7,7 +7,7 @@ const fs = require('fs').promises;
 const dbConfig = {
     host: 'localhost',
     user: 'root',
-    password: '*******',
+    password: '********',
     database: 'hakaton2025'
 };
 
@@ -56,7 +56,8 @@ async function processAndImportFile(filePath, connection) {
         const name = row['Naziv lijeka'];
         const desc = row['Farmaceutski oblik, jačina i opis pakovanja'];
         const avail = row['Režim izdavanja lijeka'];
-        const sql = `INSERT INTO Drug (name, ATC, INN, maxPrice, available, description) VALUES (?, ?, ?, ?, ?, ?)`;
+        const sql = `INSERT INTO Drug (name, ATC, INN, maxPrice, available, description, urlPic) 
+        VALUES (?, ?, ?, ?, ?, ?, null)`;
 
         try {
             await connection.execute(sql, [name, ATC, INN, null, avail, desc]);

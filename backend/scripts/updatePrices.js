@@ -7,7 +7,7 @@ const fs = require('fs').promises;
 const dbConfig = {
     host: 'localhost',
     user: 'root',
-    password: '*******',
+    password: '******',
     database: 'hakaton2025'
 };
 
@@ -56,7 +56,7 @@ async function processAndUpdateFile(filePath, connection) {
         const strength = row['Jačina lijeka'] || '';
         const packDesc = row['Opis pakovanja'] || '';
         
-        let maxPrice = row['Utvrđena maksimalna cijena lijeka'];
+        let maxPrice = row['Utvrđena maksimalna cijena lijeka']; //ukloniti euro simbol u zagradama
 
         const description = [pharmForm, strength, packDesc].join(', ');
 
