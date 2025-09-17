@@ -177,8 +177,8 @@ const Header = () => {
                           <strong>{item[3]}</strong> {/* Naziv lijeka */}
                           <p>
                             INN: {item[2]} <br />
-                            {/* Oblik: {item[4]} <br />
-                            Režim: {item[5]} */}
+                            Oblik: {item[4]} <br />
+                            {/* Režim: {item[5]} */}
                           </p>
                           {/* <small>Proizvođač: {item[7]}</small> */}
                         </div>

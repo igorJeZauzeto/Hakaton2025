@@ -2,28 +2,16 @@ const db = require("../config/db");
 
 exports.getDrugs = async (req, res) => {
   try {
-    // 1. Dohvaćanje parametara iz URL-a
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 100;
-    const offset = (page - 1) * limit;
+    const search = req.query.search || '';
+    const limit = 10;
 
-    // 2. Izvršavanje upita s LIMIT i OFFSET klauzulama
     const [rows] = await db.query(
-      "SELECT * FROM Drug LIMIT ? OFFSET ?",
-      [limit, offset]
+      "SELECT * FROM Drug WHERE name LIKE ? OR INN LIKE ? ORDER BY name LIMIT ?",
+      [`%${search}%`, `%${search}%`, limit]
     );
 
-    // 3. Opcionalno: Dohvati ukupan broj rezultata za paginaciju na frontendu
-    const [[totalCount]] = await db.query("SELECT COUNT(*) AS count FROM Drug");
-    const totalDrugs = totalCount.count;
-
-    // 4. Slanje odgovora s podacima i informacijama o paginaciji
     res.json({
       drugs: rows,
-      totalCount: totalDrugs,
-      currentPage: page,
-      perPage: limit,
-      totalPages: Math.ceil(totalDrugs / limit),
     });
   } catch (err) {
     res.status(500).json({ error: err.message });

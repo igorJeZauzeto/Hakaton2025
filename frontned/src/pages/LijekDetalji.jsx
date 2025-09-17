@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DrugSearch from "../components/DrugSearch";
-import { getAllDrugs } from "../services/drugService";
+import { getDrugById } from "../services/drugService";
 import emergencyImg from "./emergency-3.webp";
 
 const LijekDetalji = () => {
@@ -13,12 +13,11 @@ const LijekDetalji = () => {
   useEffect(() => {
     const fetchLijek = async () => {
       try {
-        const podaci = await getAllDrugs();
-        const foundLijek = podaci.drugs.find((record) => record.id === parseInt(id));
+        const foundLijek = await getDrugById(id);
         if (foundLijek) {
           setLijek(foundLijek);
         } else {
-          setError("Lijek nije pronađen.", podaci[0].id);
+          setError("Lijek nije pronađen.");
         }
       } catch (err) {
         setError("Došlo je do greške prilikom dohvatanja podataka.");
