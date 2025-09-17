@@ -109,14 +109,14 @@ const Header = () => {
             className="logo d-flex align-items-center me-auto me-xl-0"
           >
             <h1 className="sitename">
-              Ljuma<span>Nator</span>
+              Open<span>Med</span>
             </h1>
           </NavLink>
 
           <nav id="navmenu" className="navmenu">
             <ul>
               <li>
-                <NavLink to="/" className="active">
+                <NavLink to="/">
                   Početna
                 </NavLink>
               </li>
@@ -124,14 +124,14 @@ const Header = () => {
                 <NavLink to="/about">O nama</NavLink>
               </li>
               <li>
-                <NavLink to="/departments">Apoteke</NavLink>
+                <NavLink to="/map">Apoteke</NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink to="/services">Mapa</NavLink>
               </li>
               <li>
                 <NavLink to="/doctors">Doktori</NavLink>
-              </li>
+              </li> */}
               <li>
                 <NavLink to="/contact">Kontakt</NavLink>
               </li>
