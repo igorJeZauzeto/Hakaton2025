@@ -2,8 +2,17 @@ const db = require("../config/db");
 
 exports.getDrugs = async (req, res) => {
   try {
-    const [rows] = await db.query("SELECT * FROM Drug");
-    res.json(rows);
+    const search = req.query.search || '';
+    const limit = 10;
+
+    const [rows] = await db.query(
+      "SELECT * FROM Drug WHERE name LIKE ? OR INN LIKE ? ORDER BY name LIMIT ?",
+      [`%${search}%`, `%${search}%`, limit]
+    );
+
+    res.json({
+      drugs: rows,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
