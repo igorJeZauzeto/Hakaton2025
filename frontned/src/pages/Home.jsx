@@ -37,12 +37,12 @@ function Home() {
                 data-aos-delay={400}
               >
                 <div className="stat-item">
-                  <span className="number">25K+</span>
-                  <span className="label">popusenih kurcina</span>
+                  <span className="number">24/7</span>
+                  <span className="label">Dostupnost informacija</span>
                 </div>
                 <div className="stat-item">
-                  <span className="number">98%</span>
-                  <span className="label">Satisfackcija klijenata</span>
+                  <span className="number">99%</span>
+                  <span className="label">Sigurnost liste</span>
                 </div>
               </div>
             </div>
@@ -68,14 +68,14 @@ function Home() {
                     <i className="bi bi-award" />
                     <div className="stat-text">
                       <span className="number">2000+</span>
-                      <span className="label">Dostupnih ljekova</span>
+                      <span className="label">Dostupnih lijekova</span>
                     </div>
                   </div>
                   <div className="stat">
                     <i className="bi bi-people" />
                     <div className="stat-text">
                       <span className="number">150+</span>
-                      <span className="label">Jadrankinih udvaraca</span>
+                      <span className="label">Korisnika</span>
                     </div>
                   </div>
                   <div className="stat">
