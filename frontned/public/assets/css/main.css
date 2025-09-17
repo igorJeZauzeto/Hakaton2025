@@ -785,6 +785,10 @@ section,
   align-items: center;
 }
 
+.pdtop{
+  padding-top: 120px;
+}
+
 .hero .hero-image {
   position: relative;
 }
@@ -1115,7 +1119,7 @@ section,
 }
 
 @media (max-width: 992px) {
-  .hero {
+  .hero, .pdtop {
     padding: 60px 0;
   }
 
