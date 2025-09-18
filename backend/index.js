@@ -5,25 +5,23 @@ const cors = require('cors');
 // Middleware za obradu JSON zahtjeva
 app.use(express.json());
 
-// Dinamična CORS konfiguracija
-const allowedOrigins = [
-    'https://hakaton2025.vercel.app',
-    'https://hhakaton2025-beryl.vercel.app', // Vaš privremeni Vercel URL
-    'http://localhost:3000' // Za lokalni razvoj
-];
+// Dinamička CORS konfiguracija
+const allowlist = ['http://localhost:3000', 'https://hakaton2025-beryl.vercel.app/'];
 
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-}));
+const corsOptionsDelegate = function (req, callback) {
+    let corsOptions;
+    const origin = req.header('Origin');
+
+    if (allowlist.indexOf(origin) !== -1 || origin.endsWith('.vercel.app')) {
+        corsOptions = { origin: true }; // Pristup dozvoljen
+    } else {
+        corsOptions = { origin: false }; // Pristup zabranjen
+    }
+    callback(null, corsOptions);
+};
+
+// Primjena dinamičkog CORS-a na svim rutama
+app.use(cors(corsOptionsDelegate));
 
 // Uvezi i poveži rute
 const accountRoutes = require("./routes/accountRoutes");
