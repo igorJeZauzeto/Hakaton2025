@@ -22,14 +22,14 @@ function About() {
           >
             <div className="hover-top-in text-center">
               <div className="overflow-hidden z-index-1 position-relative px-5">
-                <img className="rounded-circle border border-5 border-white shadow" src="https://bootdey.com/img/Content/avatar/avatar1.png" title="" alt="Team member" />
+                <img className="rounded-circle border border-5 border-white shadow" src="./team/igor.jpg" title="" alt="Team member" />
               </div>
               <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
                 <h6 className="fw-700 dark-color mb-1">Igor Vujošević</h6>
                 <small>Lead Developer</small>
                 <div className="pt-2">
                   <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
-                  <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
+                  <a className="me-2 text-primary" href="https://www.instagram.com/igor_vujosevic/"><i className="bi bi-instagram"></i></a>
                 </div>
               </div>
             </div>
@@ -46,9 +46,8 @@ function About() {
               </div>
               <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
                 <h6 className="fw-700 dark-color mb-1">Kristijan Vuković</h6>
-                <small>Co-Founder</small>
+                <small>Backend developer</small>
                 <div className="pt-2">
-                  <a className="me-2 text-primary" href="#"><i className="bi bi-facebook"></i></a>
                   <a className="me-2 text-primary" href="#"><i className="bi bi-twitter"></i></a>
                   <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
                   <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
@@ -63,13 +62,12 @@ function About() {
           >
             <div className="hover-top-in text-center">
               <div className="overflow-hidden z-index-1 position-relative px-5">
-                <img className="rounded-circle border border-5 border-white shadow" src="https://bootdey.com/img/Content/avatar/avatar2.png" title="" alt="Team member" />
+                <img className="rounded-circle border border-5 border-white shadow" src="./team/pero.jpg" title="" alt="Team member" />
               </div>
               <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
                 <h6 className="fw-700 dark-color mb-1">Petar Perović</h6>
-                <small>Co-Founder</small>
+                <small>Frontend/Design</small>
                 <div className="pt-2">
-                  <a className="me-2 text-primary" href="#"><i className="bi bi-facebook"></i></a>
                   <a className="me-2 text-primary" href="#"><i className="bi bi-twitter"></i></a>
                   <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
                   <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
@@ -88,10 +86,9 @@ function About() {
               </div>
               <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
                 <h6 className="fw-700 dark-color mb-1">Luka Ljumović</h6>
-                <small>Co-Founder</small>
+                <small>Frontend developer</small>
                 <div className="pt-2">
                   <div className="pt-2">
-                    <a className="me-2 text-primary" href="#"><i className="bi bi-facebook"></i></a>
                     <a className="me-2 text-primary" href="#"><i className="bi bi-twitter"></i></a>
                     <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
                     <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
@@ -107,14 +104,13 @@ function About() {
           >
             <div className="hover-top-in text-center">
               <div className="overflow-hidden z-index-1 position-relative px-5">
-                <img className="rounded-circle border border-5 border-white shadow" src="https://bootdey.com/img/Content/avatar/avatar4.png" title="" alt="Team member" />
+                <img className="rounded-circle border border-5 border-white shadow" src="./team/sabo.jpg" title="" alt="Team member" />
               </div>
               <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
                 <h6 className="fw-700 dark-color mb-1">Danilo Šabović</h6>
-                <small>Co-Founder</small>
+                <small>Frontend developer</small>
                 <div className="pt-2">
                   <div className="pt-2">
-                    <a className="me-2 text-primary" href="#"><i className="bi bi-facebook"></i></a>
                     <a className="me-2 text-primary" href="#"><i className="bi bi-twitter"></i></a>
                     <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
                     <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
