@@ -46,7 +46,7 @@ const LijekDetalji = () => {
     <section id="featured-departments" className="featured-departments section">
       {/* Section Title */}
       <div className="container section-title" data-aos="fade-up">
-        <h2>{lijek[3]}</h2>
+        <h2>{lijek.name}</h2>
       </div>
       {/* End Section Title */}
       <div className="container" data-aos="fade-up" data-aos-delay={100}>

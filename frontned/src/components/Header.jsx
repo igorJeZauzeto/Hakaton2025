@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import podaci from "../podaci.json"; // import JSON fajla
+import {getAllDrugs} from "../services/drugService";
 
 const Header = () => {
   const [showSearchModal, setShowSearchModal] = useState(false);
@@ -73,7 +73,7 @@ const Header = () => {
   }, []);
 
   // Live search funkcija
-  const handleLiveSearch = (e) => {
+  const handleLiveSearch = async (e) => {
     const value = e.target.value.toLowerCase();
     setSearchTerm(value);
 
@@ -83,11 +83,7 @@ const Header = () => {
     }
 
     // Pretraga po Nazivu lijeka i INN
-    const results = podaci.records.filter(
-      (record) =>
-        record[2].toLowerCase().includes(value) || // INN
-        record[3].toLowerCase().includes(value)    // Naziv lijeka
-    );
+    const results = await getAllDrugs(value);
 
     setSearchResults(results);
   };
@@ -168,16 +164,16 @@ const Header = () => {
                 <div className="search-grid">
                   {searchResults.map((item) => (
                     <div
-                      key={item[0]}
+                      key={item.id}
                       className="search-card"
-                      onClick={() => handleResultClick(item[0])}
+                      onClick={() => handleResultClick(item.id)}
                     >
                       <div className="search-card-content">
                         <div>
-                          <strong>{item[3]}</strong> {/* Naziv lijeka */}
+                          <strong>{item.name}</strong> {/* Naziv lijeka */}
                           <p>
-                            INN: {item[2]} <br />
-                            Oblik: {item[4]} <br />
+                            INN: {item.INN} <br />
+                            Oblik: {item.description} <br />
                             {/* Režim: {item[5]} */}
                           </p>
                           {/* <small>Proizvođač: {item[7]}</small> */}
