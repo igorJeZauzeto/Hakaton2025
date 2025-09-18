@@ -16,6 +16,10 @@ app.use("/api", drugRoutes);
 app.use("/api", treatmentRoutes);
 app.use("/api", openaiRoutes);
 
+app.use(cors({
+    origin: 'https://hakaton2025-beryl.vercel.app/' // Vercel URL
+}));
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
