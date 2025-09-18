@@ -1,15 +1,18 @@
 const API_URL = `${process.env.REACT_APP_API_URL}/api/Drug`;
 
-// **1. READ: Dohvati sve lekove**
-export const getAllDrugs = async () => {
+export const getAllDrugs = async (searchTerm = '') => {
   try {
-    const response = await fetch(`${API_URL}`);
+    const response = await fetch(`${API_URL}/?search=${(searchTerm)}`);
+
+    // Provjerava da li je odgovor uspješan (status 200 OK)
     if (!response.ok) {
-      throw new Error('Greška pri preuzimanju lekova.');
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    return await response.json();
+
+    const data = await response.json();
+    return data.drugs; // Vraća niz lekova
   } catch (error) {
-    console.error('Došlo je do greške prilikom dohvatanja lekova: ', error);
+    console.error("Greška pri dohvaćanju lekova:", error);
     return []; // Vraća prazan niz u slučaju greške
   }
 };

@@ -1,174 +1,128 @@
-import React from "react";
-import { Link } from "react-router-dom";
-const About = () =>{
-    return(
-          
-    <section
-      id="call-to-action"
-      className="call-to-action section light-background pdtop"
-    >
-    <div className="container section-title" data-aos="fade-up">
-        <h2>O nama</h2>
-        <p>
-          Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-          consectetur velit
-        </p>
-      </div>
-      <div className="container" data-aos="fade-up" data-aos-delay={100}>
-        <div className="hero-content" data-aos="fade-up" data-aos-delay={200}>
-          <div className="row align-items-center">
-            <div className="col-lg-6">
-              <div className="content-wrapper">
-                <h2>Exceptional Care for Your Health Journey</h2>
-                <p>
-                  Discover comprehensive healthcare services delivered with
-                  compassion and expertise. Our dedicated team is committed to
-                  providing personalized medical care that puts you first.
-                </p>
-                <div className="action-buttons">
-                  <Link to="appointment.html" className="primary-btn">
-                    Schedule Consultation
-                  </Link>
-                  <Link to="services.html" className="secondary-link">
-                    <span>Explore Services</span>
-                    <i className="fas fa-arrow-right" />
-                  </Link>
-                </div>
+import React from 'react';
+import styles from './About.module.css';
+
+function About() {
+  return (
+    <section id="team" className="section bg-gray-100">
+      <div className="container">
+        <div
+          className="row section-heading justify-content-center text-center"
+          data-wow-duration="0.3s"
+          data-wow-delay="0.3s"
+        >
+          <div className="col-lg-8 col-xl-6">
+            <h3 className="h1 bg-primary-after after-50px pb-3 mb-3">Naš tim</h3>
+          </div>
+        </div>
+        <div className="row">
+          <div
+            className="col-lg-3 col-sm-6 my-3"
+            data-wow-duration="0.3s"
+            data-wow-delay="0.3s"
+          >
+            <div className="hover-top-in text-center">
+              <div className="overflow-hidden z-index-1 position-relative px-5">
+                <img className="rounded-circle border border-5 border-white shadow" src="./team/igor.jpg" title="" alt="Team member" />
               </div>
-            </div>
-            <div className="col-lg-6">
-              <div
-                className="hero-image"
-                data-aos="zoom-in"
-                data-aos-delay={300}
-              >
-                <img
-                  src="assets/img/health/showcase-2.webp"
-                  alt="Healthcare Excellence"
-                  className="img-fluid"
-                />
+              <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
+                <h6 className="fw-700 dark-color mb-1">Igor Vujošević</h6>
+                <small>Lead Developer</small>
+                <div className="pt-2">
+                  <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
+                  <a className="me-2 text-primary" href="https://www.instagram.com/igor_vujosevic/"><i className="bi bi-instagram"></i></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="stats-section" data-aos="fade-up" data-aos-delay={400}>
-          <div className="row">
-            <div className="col-lg-3 col-md-6">
-              <div className="stat-item">
-                <div className="stat-number">25+</div>
-                <div className="stat-label">Years Experience</div>
+          {/* U idealnom slučaju, umjesto ponavljanja koda, koristili biste map() funkciju za prikaz svakog člana tima. */}
+          <div
+            className="col-lg-3 col-sm-6 my-3"
+            data-wow-duration="0.3s"
+            data-wow-delay="0.3s"
+          >
+            <div className="hover-top-in text-center">
+              <div className="overflow-hidden z-index-1 position-relative px-5">
+                <img className="rounded-circle border border-5 border-white shadow" src="https://bootdey.com/img/Content/avatar/avatar2.png" title="" alt="Team member" />
               </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <div className="stat-item">
-                <div className="stat-number">15K+</div>
-                <div className="stat-label">Happy Patients</div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <div className="stat-item">
-                <div className="stat-number">50+</div>
-                <div className="stat-label">Medical Experts</div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <div className="stat-item">
-                <div className="stat-number">24/7</div>
-                <div className="stat-label">Emergency Care</div>
+              <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
+                <h6 className="fw-700 dark-color mb-1">Kristijan Vuković</h6>
+                <small>Backend developer</small>
+                <div className="pt-2">
+                  <a className="me-2 text-primary" href="#"><i className="bi bi-twitter"></i></a>
+                  <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
+                  <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="services-grid" data-aos="fade-up" data-aos-delay={500}>
-          <div className="row">
-            <div className="col-lg-4 col-md-6">
-              <div
-                className="service-card"
-                data-aos="fade-up"
-                data-aos-delay={100}
-              >
-                <div className="service-icon">
-                  <i className="fas fa-heartbeat" />
-                </div>
-                <h4>Cardiology Excellence</h4>
-                <p>
-                  Advanced cardiac care with state-of-the-art diagnostic
-                  equipment and experienced cardiologists dedicated to heart
-                  health.
-                </p>
-                <Link to="" className="service-link">
-                  Learn More
-                </Link>
+          <div
+            className="col-lg-3 col-sm-6 my-3"
+            data-wow-duration="0.3s"
+            data-wow-delay="0.3s"
+          >
+            <div className="hover-top-in text-center">
+              <div className="overflow-hidden z-index-1 position-relative px-5">
+                <img className="rounded-circle border border-5 border-white shadow" src="./team/pero.jpg" title="" alt="Team member" />
               </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div
-                className="service-card"
-                data-aos="fade-up"
-                data-aos-delay={200}
-              >
-                <div className="service-icon">
-                  <i className="fas fa-brain" />
+              <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
+                <h6 className="fw-700 dark-color mb-1">Petar Perović</h6>
+                <small>Frontend/Design</small>
+                <div className="pt-2">
+                  <a className="me-2 text-primary" href="#"><i className="bi bi-twitter"></i></a>
+                  <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
+                  <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
                 </div>
-                <h4>Neurology Center</h4>
-                <p>
-                  Comprehensive neurological services including diagnosis and
-                  treatment of brain, spine, and nervous system conditions.
-                </p>
-                <Link to="" className="service-link">
-                  Learn More
-                </Link>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div
-                className="service-card"
-                data-aos="fade-up"
-                data-aos-delay={300}
-              >
-                <div className="service-icon">
-                  <i className="fas fa-shield-alt" />
-                </div>
-                <h4>Preventive Care</h4>
-                <p>
-                  Proactive health screenings and wellness programs designed to
-                  prevent illness and maintain optimal health.
-                </p>
-                <Link to="" className="service-link">
-                  Learn More
-                </Link>
               </div>
             </div>
           </div>
-        </div>
-        <div className="contact-banner" data-aos="zoom-in" data-aos-delay={600}>
-          <div className="banner-content">
-            <div className="contact-info">
-              <div className="contact-icon">
-                <i className="fas fa-phone" />
+          <div
+            className="col-lg-3 col-sm-6 my-3"
+            data-wow-duration="0.3s"
+            data-wow-delay="0.3s"
+          >
+            <div className="hover-top-in text-center">
+              <div className="overflow-hidden z-index-1 position-relative px-5">
+                <img className="rounded-circle border border-5 border-white shadow" src="https://bootdey.com/img/Content/avatar/avatar3.png" title="" alt="Team member" />
               </div>
-              <div className="contact-text">
-                <h5>Need Immediate Assistance?</h5>
-                <p>
-                  Our medical team is available around the clock for urgent
-                  consultations and emergency support.
-                </p>
+              <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
+                <h6 className="fw-700 dark-color mb-1">Luka Ljumović</h6>
+                <small>Frontend developer</small>
+                <div className="pt-2">
+                  <div className="pt-2">
+                    <a className="me-2 text-primary" href="#"><i className="bi bi-twitter"></i></a>
+                    <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
+                    <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="contact-actions">
-              <Link to="tel:+15551234567" className="call-btn">
-                <i className="fas fa-phone" />
-                (555) 123-4567
-              </Link>
-              <Link to="contact.html" className="contact-link">
-                Get Directions
-              </Link>
+          </div>
+          <div
+            className="col-lg-3 col-sm-6 my-3"
+            data-wow-duration="0.3s"
+            data-wow-delay="0.4s"
+          >
+            <div className="hover-top-in text-center">
+              <div className="overflow-hidden z-index-1 position-relative px-5">
+                <img className="rounded-circle border border-5 border-white shadow" src="./team/sabo.jpg" title="" alt="Team member" />
+              </div>
+              <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
+                <h6 className="fw-700 dark-color mb-1">Danilo Šabović</h6>
+                <small>Frontend developer</small>
+                <div className="pt-2">
+                  <div className="pt-2">
+                    <a className="me-2 text-primary" href="#"><i className="bi bi-twitter"></i></a>
+                    <a className="me-2 text-primary" href="#"><i className="bi bi-linkedin"></i></a>
+                    <a className="me-2 text-primary" href="#"><i className="bi bi-instagram"></i></a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-   
-    );
-};
+  );
+}
+
 export default About;

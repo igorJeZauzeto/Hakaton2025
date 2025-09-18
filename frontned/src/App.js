@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import List from "./pages/List";
+
 function App() {
   return (
     <Router>
@@ -14,7 +16,7 @@ function App() {
         <Route path ="/about" element={<About />} />
         <Route path ="/contact" element={<Contact />} />
         <Route path="/lijek/:id" element={<LijekDetalji />} />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/lista" element={<List />} />
       </Routes>
       <Footer/>
     </Router>
