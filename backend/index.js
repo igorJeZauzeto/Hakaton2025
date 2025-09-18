@@ -1,44 +1,41 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const port = 3500;
 const cors = require('cors');
 
 // Middleware za obradu JSON zahtjeva
 app.use(express.json());
 
-// Dozvoljene domene
+// Dinamična CORS konfiguracija
 const allowedOrigins = [
     'https://hakaton2025.vercel.app',
-    'https://hhakaton2025-beryl.vercel.app',
-    'http://localhost:3000'
+    'https://hhakaton2025-beryl.vercel.app', // Vaš privremeni Vercel URL
+    'http://localhost:3000' // Za lokalni razvoj
 ];
 
-const corsOptions = {
+app.use(cors({
     origin: function (origin, callback) {
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
         }
-    }
-};
+        return callback(null, true);
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+}));
 
-// Primijenite CORS s opcijama
-app.use(cors(corsOptions));
-
-// Uvezi rute
+// Uvezi i poveži rute
 const accountRoutes = require("./routes/accountRoutes");
 const drugRoutes = require("./routes/drugRoutes");
 const treatmentRoutes = require("./routes/treatmentRoutes");
 const openaiRoutes = require("./routes/openaiRoutes");
 
-// Poveži rute s aplikacijom
 app.use("/api", accountRoutes);
 app.use("/api", drugRoutes);
 app.use("/api", treatmentRoutes);
 app.use("/api", openaiRoutes);
 
-// Pokreni server
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+app.listen(3500, () => {
+    console.log('Server running on port 3500');
 });
