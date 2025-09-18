@@ -44,16 +44,20 @@ const testList = async (req, res) => {
         return res.status(400).json({ error: "Poruka je obavezna." });
     }
 
-    const FinMessage =
-        `Analiziraj sljedeće lijekove. Tvoj zadatak je da utvrdiš postoji li medicinski značajna interakcija između njih. Fokusiraj se na kombinacije koje su opasne.
-Lijekovi:${message}
-Ukoliko ne pronađeš interakciju, odgovori ISKLJUČIVO sljedećom rečenicom: "Nismo našli problema sa listom."
-Ukoliko postoji interakcija, odgovori ISKLJUČIVO sljedećom rečenicom: "Postoji problem sa listom. (Objasnjenje problema)".`;
-
     try {
         const response = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: FinMessage }],
+            temperature: 0.2, // Niska temperatura za manju kreativnost i veću preciznost
+            messages: [
+                {
+                    role: "system",
+                    content: "Ti si AI specijaliziran za analizu interakcija lijekova. Tvoj jedini zadatak je da utvrdiš postoji li poznata, medicinski značajna interakcija između navedenih lijekova. Tvoj odgovor mora biti isključivo jedna od sljedeće dvije rečenice. Ako postoji interakcija: 'Postoji problem sa listom. (Objasnjenje problema)' Ako ne postoji: 'Nismo našli problema sa listom.' Ne smiješ davati savjete, dijagnoze ili bilo kakve dodatne informacije."
+                },
+                {
+                    role: "user",
+                    content: `Analiziraj sljedeće lijekove. Tvoj zadatak je da utvrdiš postoji li medicinski značajna interakcija između njih. Fokusiraj se na kombinacije koje su opasne. Lijekovi:${message}`
+                },
+            ],
         });
 
         if (!response.choices || response.choices.length === 0) {
