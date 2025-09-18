@@ -7,9 +7,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use(cors({
-    origin: 'https://hakaton2025-beryl.vercel.app/' // Vercel URL
+    origin: 'https://*.vercel.app' // Prihvata sve subdomene na vercel.app
 }));
-
 
 const accountRoutes = require("./routes/accountRoutes");
 const drugRoutes = require("./routes/drugRoutes");
