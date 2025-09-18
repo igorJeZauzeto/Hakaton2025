@@ -90,11 +90,11 @@ function Home() {
                   <div className="cta-section">
                     <div className="cta-buttons">
                       <Link
-                        to="https://www.youtube.com/watch?v=Y7f98aduVJ8"
+                        to="/lista"
                         className="btn btn-secondary glightbox"
                       >
-                        <i className="bi bi-play-circle" />
-                        Pronadji najblizu apoteku
+                        <i className="bi bi-capsule" />
+                        Provjeri listu ljekova
                       </Link>
                     </div>
                   </div>

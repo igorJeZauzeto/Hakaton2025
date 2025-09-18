@@ -119,14 +119,8 @@ const Header = () => {
               <li>
                 <NavLink to="/about">O nama</NavLink>
               </li>
-              <li>
-                <NavLink to="/map">Apoteke</NavLink>
-              </li>
               {/* <li>
-                <NavLink to="/services">Mapa</NavLink>
-              </li>
-              <li>
-                <NavLink to="/doctors">Doktori</NavLink>
+                <NavLink to="/map">Apoteke</NavLink>
               </li> */}
               <li>
                 <NavLink to="/contact">Kontakt</NavLink>
