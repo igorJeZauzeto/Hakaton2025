@@ -42,7 +42,7 @@ function About() {
           >
             <div className="hover-top-in text-center">
               <div className="overflow-hidden z-index-1 position-relative px-5">
-                <img className="rounded-circle border border-5 border-white shadow" src="https://bootdey.com/img/Content/avatar/avatar2.png" title="" alt="Team member" />
+                <img className="rounded-circle border border-5 border-white shadow" src="./team/kiki.jpg" title="" alt="Team member" />
               </div>
               <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
                 <h6 className="fw-700 dark-color mb-1">Kristijan Vuković</h6>
@@ -82,7 +82,7 @@ function About() {
           >
             <div className="hover-top-in text-center">
               <div className="overflow-hidden z-index-1 position-relative px-5">
-                <img className="rounded-circle border border-5 border-white shadow" src="https://bootdey.com/img/Content/avatar/avatar3.png" title="" alt="Team member" />
+                <img className="rounded-circle border border-5 border-white shadow" src="./team/ljuma.jpg" title="" alt="Team member" />
               </div>
               <div className="mx-2 mx-xl-3 shadow rounded-3 position-relative mt-n4 bg-white p-4 pt-6 mx-4 text-center hover-top--in">
                 <h6 className="fw-700 dark-color mb-1">Luka Ljumović</h6>
