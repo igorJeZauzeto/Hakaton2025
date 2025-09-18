@@ -3,18 +3,21 @@ import { useParams } from "react-router-dom";
 import DrugSearch from "../components/DrugSearch";
 import { getDrugById } from "../services/drugService";
 import emergencyImg from "./emergency-3.webp";
+import { translateMessage } from "../services/openAI";
 
 const LijekDetalji = () => {
   const { id } = useParams();
   const [lijek, setLijek] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [srbINN, setSrbINN] = useState(null);
 
   useEffect(() => {
     const fetchLijek = async () => {
       try {
         const foundLijek = await getDrugById(id);
         if (foundLijek) {
+          setSrbINN(await translateMessage(foundLijek.INN));
           setLijek(foundLijek);
         } else {
           setError("Lijek nije pronađen.");
@@ -56,7 +59,7 @@ const LijekDetalji = () => {
             <div className="row">
               <div className="col-lg-6 order-lg-1">
                 <div className="department-content">
-                  <p><strong>Aktivne supstance lijeka:</strong> {lijek.INN}</p>
+                  <p><strong>Aktivne supstance lijeka:</strong> {srbINN}</p>
                   <p><strong>Farmaceutski oblik:</strong> {lijek.description}</p>
                   <p><strong>Režim izdavanja:</strong> {lijek.available}</p>
                   <p><strong>Maksimalna cijena: </strong>{lijek.maxPrice ? `${lijek.maxPrice} €` : 'Nije dostupna'}</p>
