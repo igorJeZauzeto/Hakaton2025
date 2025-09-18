@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { searchDrugs } from '../services/openFDA';
+import { translateMessage } from '../services/openAI';
 
 // Komponenta sada prima 'defaultTerm' kao prop
 const DrugSearch = ({ defaultTerm = '' }) => {
@@ -15,7 +16,14 @@ const DrugSearch = ({ defaultTerm = '' }) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await searchDrugs(term, searchType);
+      let data = await searchDrugs(term, searchType);
+      console.log(data[0].sideEffects);
+      if(data[0].purpose)
+        data[0].purpose = await translateMessage(data[0].purpose);
+      if(data[0].instructions)
+        data[0].instructions = await translateMessage(data[0].instructions);
+      if(data[0].sideEffects)
+        data[0].sideEffects = await translateMessage(data[0].sideEffects);
       setDrugs(data);
     } catch (err) {
       setError('Došlo je do greške prilikom pretrage. Pokušajte ponovo.');

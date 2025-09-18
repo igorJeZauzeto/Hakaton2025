@@ -13,7 +13,8 @@ const chatWithOpenAI = async (req, res) => {
     }
 
     const FinMessage = 
-    `In answer only give me the translation in montenegrin, try to make it as short as necessary
+    `In answer only give me the translation in montenegrin (latin). If text is already in that language, just return the 
+    the same message. Try to make it as short as necessary
     and remove unnecessary things that an average person wouldn't understand if possible, but you must keep meaning
     the same, for the next text:" ${message}"`;
 

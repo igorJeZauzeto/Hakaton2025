@@ -10,13 +10,14 @@ const LijekDetalji = () => {
   const [lijek, setLijek] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [srbINN, setSrbINN] = useState(null);
 
   useEffect(() => {
     const fetchLijek = async () => {
       try {
-        let foundLijek = await getDrugById(id);
+        const foundLijek = await getDrugById(id);
         if (foundLijek) {
-          // foundLijek.INN = await translateMessage(foundLijek.INN);
+          setSrbINN(await translateMessage(foundLijek.INN));
           setLijek(foundLijek);
         } else {
           setError("Lijek nije pronađen.");
@@ -58,7 +59,7 @@ const LijekDetalji = () => {
             <div className="row">
               <div className="col-lg-6 order-lg-1">
                 <div className="department-content">
-                  <p><strong>Aktivne supstance lijeka:</strong> {lijek.INN}</p>
+                  <p><strong>Aktivne supstance lijeka:</strong> {srbINN}</p>
                   <p><strong>Farmaceutski oblik:</strong> {lijek.description}</p>
                   <p><strong>Režim izdavanja:</strong> {lijek.available}</p>
                   <p><strong>Maksimalna cijena: </strong>{lijek.maxPrice ? `${lijek.maxPrice} €` : 'Nije dostupna'}</p>
