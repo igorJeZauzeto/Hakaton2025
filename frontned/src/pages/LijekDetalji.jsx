@@ -2,8 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DrugSearch from "../components/DrugSearch";
 import { getDrugById } from "../services/drugService";
-import emergencyImg from "./emergency-3.webp";
 import { translateMessage } from "../services/openAI";
+
+
+
+function formatText(input) {
+  return input
+    .replace(/\u00AE/g, '')   
+    .replace(/\s+/g, '-')    
+    .toLowerCase();          
+}
 
 const LijekDetalji = () => {
   const { id } = useParams();
@@ -11,6 +19,10 @@ const LijekDetalji = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [srbINN, setSrbINN] = useState(null);
+
+   const [imgIndex, setImgIndex] = useState(0);
+  const extensions = ['png', 'jpg', 'webp']; // moguće ekstenzije
+
 
   useEffect(() => {
     const fetchLijek = async () => {
@@ -42,6 +54,23 @@ const LijekDetalji = () => {
   // Ostatak koda se prikazuje samo ako je lijek uspješno pronađen
   const searchTerm = lijek.INN.split(',')[0].trim();
 
+
+  const imgSrc = imgIndex < extensions.length
+    ? `/drug-imgs/${formatText(lijek.name)}.${extensions[imgIndex]}`
+    : `/emergency-3.webp`;
+
+const handleImgError = () => {
+  if (imgIndex < extensions.length - 1) {
+    console.log(`/drug-imgs/${formatText(lijek.name)}.${extensions[imgIndex]}`);
+    setImgIndex(imgIndex + 1);
+  } else {
+    setImgIndex(extensions.length); // prelazak van opsega da prikaže default
+  }
+};
+
+
+
+
   return (
     <section id="featured-departments" className="featured-departments section">
       {/* Section Title */}
@@ -69,10 +98,13 @@ const LijekDetalji = () => {
               <div className="col-lg-6 order-lg-2">
                 <div className="department-visual">
                   <div className="image-wrapper">
-                    <img
-                      src={emergencyImg}
-                      alt="Emergency Department"
-                      className="img-fluid"
+                    
+
+       <img
+                      src={imgSrc}
+                      alt={lijek.name}
+                      onError={handleImgError}
+                      style={{ maxWidth: '100%' }}
                     />
                   </div>
                 </div>
