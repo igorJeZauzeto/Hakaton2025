@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import DrugSearch from "../components/DrugSearch";
 import { getDrugById } from "../services/drugService";
 import emergencyImg from "./emergency-3.webp";
+import { translateMessage } from "../services/openAI";
 
 const LijekDetalji = () => {
   const { id } = useParams();
@@ -13,8 +14,9 @@ const LijekDetalji = () => {
   useEffect(() => {
     const fetchLijek = async () => {
       try {
-        const foundLijek = await getDrugById(id);
+        let foundLijek = await getDrugById(id);
         if (foundLijek) {
+          // foundLijek.INN = await translateMessage(foundLijek.INN);
           setLijek(foundLijek);
         } else {
           setError("Lijek nije pronađen.");
